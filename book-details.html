@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library App - Book Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Book Details</h2>
+        <h3 id="book-title">C Programming</h3>
+        <p><strong>Author:</strong> Dennis Ritchie</p>
+        <p><strong>Description:</strong> This book covers the fundamentals of C programming language and includes examples for beginners.</p>
+        <a href="home.html">Back to Home</a>
+    </div>
+
+    <script>
+        // Simple JS to read query params and update book info
+        const params = new URLSearchParams(window.location.search);
+        const book = params.get('book');
+        const title = document.getElementById('book-title');
+
+        const books = {
+            c: {title: 'C Programming', author: 'Dennis Ritchie', desc: 'Fundamentals of C programming language with examples.'},
+            java: {title: 'Java', author: 'James Gosling', desc: 'Learn Java programming from basics to advanced.'},
+            python: {title: 'Python', author: 'Guido van Rossum', desc: 'Comprehensive guide to Python programming.'}
+        };
+
+        if (books[book]) {
+            title.textContent = books[book].title;
+            document.querySelector('p strong').nextSibling.textContent = ` ${books[book].author}`;
+            document.querySelectorAll('p')[1].innerHTML = `<strong>Description:</strong> ${books[book].desc}`;
+        }
+    </script>
+</body>
+</html>

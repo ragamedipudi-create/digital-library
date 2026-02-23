@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library App - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Library Home</h2>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search books...">
+        </div>
+
+        <!-- Book list -->
+        <div class="book-list" id="bookList">
+            <div class="book-item">
+                <h3>C Programming</h3>
+                <p>Author: Dennis Ritchie</p>
+                <a href="https://www.google.com/search?q=C+Programming+book" target="_blank" rel="noopener noreferrer">View Details</a>
+            </div>
+            <div class="book-item">
+                <h3>Java</h3>
+                <p>Author: James Gosling</p>
+                <a href="https://www.google.com/search?q=Java+Programming+book" target="_blank" rel="noopener noreferrer">View Details</a>
+            </div>
+            <div class="book-item">
+                <h3>Python</h3>
+                <p>Author: Guido van Rossum</p>
+                <a href="https://www.google.com/search?q=Python+Programming+book" target="_blank" rel="noopener noreferrer">View Details</a>
+            </div>
+            <div class="book-item">
+                <h3>HTML & CSS</h3>
+                <p>Author: Jon Duckett</p>
+                <a href="https://www.google.com/search?q=HTML+CSS+book" target="_blank" rel="noopener noreferrer">View Details</a>
+            </div>
+            <div class="book-item">
+                <h3>JavaScript</h3>
+                <p>Author: David Flanagan</p>
+                <a href="https://www.google.com/search?q=JavaScript+book" target="_blank" rel="noopener noreferrer">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple JavaScript for live search -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const bookList = document.getElementById('bookList');
+        const books = bookList.getElementsByClassName('book-item');
+
+        searchInput.addEventListener('input', function() {
+            const filter = searchInput.value.toLowerCase();
+            for (let i = 0; i < books.length; i++) {
+                const title = books[i].getElementsByTagName('h3')[0].textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    books[i].style.display = '';
+                } else {
+                    books[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
